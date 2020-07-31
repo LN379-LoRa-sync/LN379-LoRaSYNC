@@ -7,26 +7,6 @@
         "info": ""
     },
     {
-        "id": "c1e6bd16.9cd9c",
-        "type": "inject",
-        "z": "90897012.e4d35",
-        "name": "",
-        "topic": "",
-        "payload": "{\"id\":\"2\",\"name\":\"ESP\",\"water_level\":251}",
-        "payloadType": "str",
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "x": 70,
-        "y": 60,
-        "wires": [
-            [
-                "67ab286.a8975d8"
-            ]
-        ]
-    },
-    {
         "id": "ede14377.6354b",
         "type": "debug",
         "z": "90897012.e4d35",
@@ -37,8 +17,8 @@
         "tostatus": false,
         "complete": "payload",
         "targetType": "msg",
-        "x": 450,
-        "y": 400,
+        "x": 310,
+        "y": 280,
         "wires": []
     },
     {
@@ -47,8 +27,8 @@
         "z": "90897012.e4d35",
         "mydb": "40890955.a85948",
         "name": "db1",
-        "x": 470,
-        "y": 40,
+        "x": 430,
+        "y": 20,
         "wires": [
             []
         ]
@@ -64,8 +44,8 @@
         "syntax": "mustache",
         "template": "INSERT INTO mydata(id,name,water_level)\nVALUES('{{payload.id}}','{{payload.name}}',{{payload.water_level}});",
         "output": "str",
-        "x": 320,
-        "y": 100,
+        "x": 160,
+        "y": 80,
         "wires": [
             [
                 "bbdc6d84.455a8",
@@ -82,10 +62,13 @@
         "qos": "2",
         "datatype": "auto",
         "broker": "aec2d4ac.3af4e8",
-        "x": 60,
-        "y": 300,
+        "x": 80,
+        "y": 280,
         "wires": [
-            []
+            [
+                "67ab286.a8975d8",
+                "ede14377.6354b"
+            ]
         ]
     },
     {
@@ -96,8 +79,8 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 170,
-        "y": 160,
+        "x": 110,
+        "y": 180,
         "wires": [
             [
                 "f9218e42.a20cb"
@@ -113,8 +96,8 @@
         "qos": "1",
         "retain": "true",
         "broker": "aec2d4ac.3af4e8",
-        "x": 790,
-        "y": 220,
+        "x": 770,
+        "y": 200,
         "wires": []
     },
     {
@@ -127,12 +110,12 @@
         "rules": [
             {
                 "t": "lte",
-                "v": "25",
+                "v": "12",
                 "vt": "num"
             },
             {
                 "t": "btwn",
-                "v": "25",
+                "v": "12",
                 "vt": "num",
                 "v2": "50",
                 "v2t": "num"
@@ -146,11 +129,12 @@
         "checkall": "true",
         "repair": false,
         "outputs": 3,
-        "x": 450,
-        "y": 160,
+        "x": 410,
+        "y": 180,
         "wires": [
             [
-                "7084dd2c.e15484"
+                "7084dd2c.e15484",
+                "abd1a1d6.f4738"
             ],
             [
                 "69009d9a.925ae4"
@@ -171,21 +155,8 @@
         "tostatus": false,
         "complete": "payload",
         "targetType": "msg",
-        "x": 790,
+        "x": 750,
         "y": 40,
-        "wires": []
-    },
-    {
-        "id": "1753ac55.86f554",
-        "type": "twilio out",
-        "z": "90897012.e4d35",
-        "twilio": "2e5798be.c25978",
-        "twilioType": "sms",
-        "url": "",
-        "number": "",
-        "name": "",
-        "x": 790,
-        "y": 80,
         "wires": []
     },
     {
@@ -196,16 +167,18 @@
         "op2": "",
         "op1type": "pay",
         "op2type": "payl",
-        "duration": "15",
+        "duration": "2",
         "extend": false,
-        "units": "s",
+        "units": "min",
         "reset": "",
         "bytopic": "all",
         "name": "",
-        "x": 590,
-        "y": 60,
+        "x": 550,
+        "y": 80,
         "wires": [
-            []
+            [
+                "110de2d8.e45fbd"
+            ]
         ]
     },
     {
@@ -227,8 +200,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 620,
-        "y": 180,
+        "x": 560,
+        "y": 140,
         "wires": [
             [
                 "22bc959d.4c4a4a",
@@ -242,11 +215,11 @@
         "z": "90897012.e4d35",
         "name": "sms",
         "message": "The level of water across the dam has reached to critical. Please move to safest zone.Emergency contact no:+911126187232.",
-        "numbers": "",
+        "numbers": "+919420804744",
         "throttle": "1",
         "twilio": "6fefe367.a9edec",
         "x": 750,
-        "y": 140,
+        "y": 120,
         "wires": [
             []
         ]
@@ -270,8 +243,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 600,
-        "y": 260,
+        "x": 560,
+        "y": 240,
         "wires": [
             [
                 "22bc959d.4c4a4a",
@@ -283,30 +256,16 @@
         "id": "3c03c3da.26d4cc",
         "type": "debug",
         "z": "90897012.e4d35",
-        "name": "",
+        "name": "Output",
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "payload",
+        "targetType": "msg",
         "x": 750,
-        "y": 300,
-        "wires": []
-    },
-    {
-        "id": "5e11b2f8.5e2bbc",
-        "type": "mqtt in",
-        "z": "90897012.e4d35",
-        "name": "",
-        "topic": "lora",
-        "qos": "0",
-        "datatype": "auto",
-        "broker": "9b9b1264.c7985",
-        "x": 300,
         "y": 280,
-        "wires": [
-            []
-        ]
+        "wires": []
     },
     {
         "id": "40890955.a85948",
@@ -343,42 +302,9 @@
         "willPayload": ""
     },
     {
-        "id": "2e5798be.c25978",
-        "type": "twilio-api",
-        "z": "",
-        "name": "",
-        "sid": "ACd9aaebe64aec31e3eea2fd2926d33019",
-        "from": "+16014016058"
-    },
-    {
         "id": "6fefe367.a9edec",
         "type": "twilioConfig",
         "z": "",
         "name": "twilioConfig"
-    },
-    {
-        "id": "9b9b1264.c7985",
-        "type": "mqtt-broker",
-        "z": "",
-        "name": "Temperature",
-        "broker": "18.223.110.198",
-        "port": "1883",
-        "clientid": "",
-        "usetls": false,
-        "compatmode": true,
-        "keepalive": "60",
-        "cleansession": true,
-        "birthTopic": "20208888/cube/data",
-        "birthQos": "1",
-        "birthRetain": "true",
-        "birthPayload": "ONLINE",
-        "closeTopic": "20208888/cube/data",
-        "closeQos": "1",
-        "closeRetain": "true",
-        "closePayload": "OFFLINE",
-        "willTopic": "20208888/cube/data",
-        "willQos": "1",
-        "willRetain": "true",
-        "willPayload": "DISCONNECTED"
     }
 ]
