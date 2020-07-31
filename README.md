@@ -5,4 +5,3 @@ The list of our codes are:
 2. Embedded code for ESP8266 to trigger the Siren as soon msg received from subscribed topic.
 3. Nodered code in JSON  format. It usually collects data from MQTT broker, analyse it ,process it and sends to database.
 4. SQL quries
-5. Code for graphical presentation
