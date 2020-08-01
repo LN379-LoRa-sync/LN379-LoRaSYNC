@@ -12,6 +12,8 @@ Physical Lyer
 Middle Layer
 1. Nodered code in JSON  format. It usually collects data from MQTT broker, analyse it ,process it and sends to database.
 2. SQL quries//Will be writing soon
+3. Nodered screenshot.
 
 User layer
-1. Visualization code in form of grafana.
+1. Grafana dashboard screenshot.
+2. Visualization code in form of grafana.
