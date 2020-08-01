@@ -19,6 +19,88 @@
   "links": [],
   "panels": [
     {
+      "datasource": null,
+      "gridPos": {
+        "h": 4,
+        "w": 7,
+        "x": 0,
+        "y": 0
+      },
+      "id": 6,
+      "options": {
+        "colorMode": "value",
+        "fieldOptions": {
+          "calcs": [
+            "last"
+          ],
+          "defaults": {
+            "mappings": [],
+            "max": 7000,
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "#EAB839",
+                  "value": 3500
+                },
+                {
+                  "color": "red",
+                  "value": 5000
+                }
+              ]
+            },
+            "unit": "lengthft"
+          },
+          "overrides": [],
+          "values": false
+        },
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "horizontal"
+      },
+      "pluginVersion": "6.7.2",
+      "targets": [
+        {
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  lastupdated AS \"time\",\n  water_level\nFROM mydata\nWHERE\n  $__timeFilter(lastupdated)\nORDER BY lastupdated",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "water_level"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "mydata",
+          "timeColumn": "lastupdated",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Current Water Level",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
@@ -30,7 +112,7 @@
         "h": 7,
         "w": 10,
         "x": 0,
-        "y": 0
+        "y": 4
       },
       "hiddenSeries": false,
       "id": 4,
@@ -158,7 +240,7 @@
         "h": 6,
         "w": 6,
         "x": 0,
-        "y": 7
+        "y": 11
       },
       "id": 2,
       "links": [
@@ -186,11 +268,29 @@
                 "value": "520"
               },
               {
-                "from": "10",
+                "from": "0",
                 "id": 2,
                 "operator": "",
-                "text": "rdthf",
-                "to": "25",
+                "text": "safe zone",
+                "to": "3500",
+                "type": 2,
+                "value": ""
+              },
+              {
+                "from": "3501",
+                "id": 3,
+                "operator": "",
+                "text": "amber zone",
+                "to": "5000",
+                "type": 2,
+                "value": ""
+              },
+              {
+                "from": "5001",
+                "id": 4,
+                "operator": "",
+                "text": "danger zone",
+                "to": "7000",
                 "type": 2,
                 "value": ""
               }
@@ -214,7 +314,7 @@
                 }
               ]
             },
-            "title": "Current Water level",
+            "title": "",
             "unit": "lengthm"
           },
           "overrides": [],
@@ -257,7 +357,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "CURRENT    WATER    LEVEL",
+      "title": "WATER LEVEL ZONE",
       "transparent": true,
       "type": "gauge"
     }
@@ -280,5 +380,5 @@
   "variables": {
     "list": []
   },
-  "version": 21
+  "version": 27
 }
