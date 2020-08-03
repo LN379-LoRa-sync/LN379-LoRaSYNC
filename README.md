@@ -1,9 +1,10 @@
 # LoRaSYNC
 This is repository for our team lora sync. We will be writing all codes here.
-This project has 3 main folders:
-a. Physical layer//We have two option to get thus data either by installing our sensors or we can use preinstalled govt datat ubnsinf VSAT communication.
+This project has 4 main folders:
+a. Physical layer//We have two option to get thus data either by installing our sensors or we can use preinstalled govt data ubnsinf VSAT communication.
 b. Middle layer
 c. User layer
+d. PPT
 
 Physical Lyer
 1. Embedded code for ESP8266 to measure water level using sensor(we will using existing radar system) and publish data(In JSON format) to topic "lorasync".
