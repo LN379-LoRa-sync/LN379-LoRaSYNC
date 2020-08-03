@@ -16,7 +16,7 @@ SELECT*FROM all_whether_station;
 
 USE db1;
 CREATE TABLE dam_data(frl double,elive_storage double,reservoir double,live_storage double,last_updated timestamp);
-INSERT INTO dam_data(frl double,elive_storage double,reservoir double,live_storage double)
+INSERT INTO dam_data(frl,elive_storage,reservoir,live_storage)
 VALUES(frl_values,elive_storage_values,reservoir_values,live_storage_values);
 SELECT*FROM dam_data;
 #IN abouve all queries we are only creating tables for different parameters and feeding the data which 
