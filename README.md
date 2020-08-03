@@ -1,7 +1,7 @@
 # LoRaSYNC
 This is repository for our team lora sync. We will be writing all codes here.
-This project has 3 main folders:
-a. Physical layer//We have two option to get thus data either by installing our sensors or we can use preinstalled govt datat ubnsinf VSAT communication.
+This project has 4 main folders:
+a. Physical layer//We have two option to get thus data either by installing our sensors or we can use pre installed govt datat using VSAT communication.
 b. Middle layer
 c. User layer
 
@@ -23,3 +23,5 @@ User layer
 2. Visualization code in form of grafana.
 3. Alert via call,SMS,telegram,twitter,whatsapp, emails.
 4. Siren using lara techlonoly
+
+4.
