@@ -24,6 +24,6 @@ User layer
 1. Grafana dashboard screenshot.
 2. Visualization code in form of grafana.
 3. Alert via call,SMS,telegram,twitter,whatsapp, emails.
-4. Siren using lara techlonoly
+4. Siren using lora techlonology.
 
-4.
+
