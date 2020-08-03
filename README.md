@@ -1,7 +1,7 @@
 # LoRaSYNC
 This is repository for our team lora sync. We will be writing all codes here.
 This project has 4 main folders:
-a. Physical layer//We have two option to get thus data either by installing our sensors or we can use preinstalled govt data ubnsinf VSAT communication.
+a. Physical layer//We have two option to get thus data either by installing our sensors or we can use preinstalled govt data.
 b. Middle layer
 c. User layer
 d. PPT
