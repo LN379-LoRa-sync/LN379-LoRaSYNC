@@ -7,311 +7,195 @@
         "info": ""
     },
     {
-        "id": "b3e4cb20.a62928",
-        "type": "http in",
-        "z": "25dc77b9.3d62c",
-        "name": "Rainfalldata",
-        "url": "http://rtsfros.com/RTDAS/RainModel.aspx?id=1012",
-        "method": "get",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 90,
-        "y": 120,
-        "wires": [
-            [
-                "ac6aa0d6.093fb",
-                "7d19269f.693f28"
-            ]
-        ]
-    },
-    {
-        "id": "63a54fca.63552",
-        "type": "mqtt in",
-        "z": "25dc77b9.3d62c",
-        "name": "Inflow of water",
-        "topic": "esp/test",
-        "qos": "2",
-        "datatype": "auto",
-        "broker": "9b9b1264.c7985",
-        "x": 90,
-        "y": 180,
-        "wires": [
-            [
-                "b74b65eb.5c2c38",
-                "295145a3.a9819a",
-                "60a3606a.75af9"
-            ]
-        ]
-    },
-    {
-        "id": "c4513c98.109bf",
-        "type": "mqtt in",
-        "z": "25dc77b9.3d62c",
-        "name": "",
-        "topic": "Outflowdata",
-        "qos": "2",
-        "datatype": "auto",
-        "broker": "9b9b1264.c7985",
-        "x": 90,
-        "y": 240,
-        "wires": [
-            [
-                "8521764a.4f07a8"
-            ]
-        ]
-    },
-    {
-        "id": "ac6aa0d6.093fb",
-        "type": "json",
-        "z": "25dc77b9.3d62c",
-        "name": "RN",
-        "property": "payload",
-        "action": "",
-        "pretty": false,
-        "x": 290,
-        "y": 80,
-        "wires": [
-            [
-                "5ffd126e.e4327c"
-            ]
-        ]
-    },
-    {
-        "id": "b74b65eb.5c2c38",
-        "type": "json",
-        "z": "25dc77b9.3d62c",
-        "name": "RN",
-        "property": "payload",
-        "action": "",
-        "pretty": false,
-        "x": 310,
-        "y": 140,
-        "wires": [
-            [
-                "7f795226.21eefc"
-            ]
-        ]
-    },
-    {
-        "id": "8521764a.4f07a8",
-        "type": "json",
-        "z": "25dc77b9.3d62c",
-        "name": "RN",
-        "property": "payload",
-        "action": "",
-        "pretty": false,
-        "x": 290,
-        "y": 200,
-        "wires": [
-            [
-                "e4576cb.802ea9"
-            ]
-        ]
-    },
-    {
-        "id": "7d19269f.693f28",
-        "type": "debug",
-        "z": "25dc77b9.3d62c",
-        "name": "Dis_RN",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "x": 240,
-        "y": 380,
-        "wires": []
-    },
-    {
-        "id": "295145a3.a9819a",
-        "type": "debug",
-        "z": "25dc77b9.3d62c",
-        "name": "Dis_Inflow",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "x": 250,
-        "y": 420,
-        "wires": []
-    },
-    {
-        "id": "60a3606a.75af9",
-        "type": "debug",
-        "z": "25dc77b9.3d62c",
-        "name": "Dis_OUT",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "x": 220,
-        "y": 500,
-        "wires": []
-    },
-    {
-        "id": "fe6584de.87d348",
+        "id": "c69eebb9.17d328",
         "type": "mysql",
         "z": "25dc77b9.3d62c",
         "mydb": "40890955.a85948",
-        "name": "Databases",
-        "x": 650,
-        "y": 20,
+        "name": "Inflow",
+        "x": 70,
+        "y": 340,
+        "wires": [
+            [
+                "1e717d64.dae073"
+            ]
+        ]
+    },
+    {
+        "id": "fcf5dcc4.439a2",
+        "type": "mysql",
+        "z": "25dc77b9.3d62c",
+        "mydb": "40890955.a85948",
+        "name": "Outflow",
+        "x": 80,
+        "y": 400,
+        "wires": [
+            [
+                "b160efcf.16889"
+            ]
+        ]
+    },
+    {
+        "id": "92bf0666.df2548",
+        "type": "mysql",
+        "z": "25dc77b9.3d62c",
+        "mydb": "40890955.a85948",
+        "name": "All Whe. sta",
+        "x": 90,
+        "y": 460,
+        "wires": [
+            [
+                "f882c6af.2d8478"
+            ]
+        ]
+    },
+    {
+        "id": "f601ebd1.16eee8",
+        "type": "calculator",
+        "z": "25dc77b9.3d62c",
+        "name": "Algorithem",
+        "inputMsgField": "payload",
+        "outputMsgField": "payload",
+        "operation": "pow",
+        "constant": "",
+        "round": false,
+        "decimals": 0,
+        "x": 470,
+        "y": 380,
+        "wires": [
+            [
+                "9ed2924e.a1b29"
+            ]
+        ]
+    },
+    {
+        "id": "1e6afe4f.2ed812",
+        "type": "mqtt in",
+        "z": "25dc77b9.3d62c",
+        "name": "Rain",
+        "topic": "Rain",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "9b9b1264.c7985",
+        "x": 70,
+        "y": 140,
         "wires": [
             []
         ]
     },
     {
-        "id": "5ffd126e.e4327c",
-        "type": "template",
+        "id": "1e717d64.dae073",
+        "type": "json",
         "z": "25dc77b9.3d62c",
         "name": "",
-        "field": "topic",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "INSERT INTO railfall(id,name,water_level)\nVALUES('{{payload.id}}','{{payload.name}}',{{payload.water_level}});",
-        "output": "str",
-        "x": 460,
-        "y": 80,
-        "wires": [
-            [
-                "fe6584de.87d348",
-                "313bd8df.73bed8"
-            ]
-        ]
-    },
-    {
-        "id": "e4576cb.802ea9",
-        "type": "template",
-        "z": "25dc77b9.3d62c",
-        "name": "",
-        "field": "topic",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "INSERT INTO outflow(id,name,water_level)\nVALUES('{{payload.id}}','{{payload.name}}',{{payload.water_level}});",
-        "output": "str",
-        "x": 460,
-        "y": 200,
-        "wires": [
-            [
-                "fe6584de.87d348",
-                "adf7eb26.a43cb8"
-            ]
-        ]
-    },
-    {
-        "id": "7f795226.21eefc",
-        "type": "template",
-        "z": "25dc77b9.3d62c",
-        "name": "",
-        "field": "topic",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "INSERT INTO inflow(id,name,water_level)\nVALUES('{{payload.id}}','{{payload.name}}',{{payload.water_level}});",
-        "output": "str",
-        "x": 460,
-        "y": 140,
-        "wires": [
-            [
-                "fe6584de.87d348",
-                "adf7eb26.a43cb8"
-            ]
-        ]
-    },
-    {
-        "id": "aa16ede8.743a6",
-        "type": "switch",
-        "z": "25dc77b9.3d62c",
-        "name": "Decision",
         "property": "payload",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "140",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "160",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "180",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "200",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 4,
-        "x": 840,
+        "action": "",
+        "pretty": false,
+        "x": 230,
+        "y": 340,
+        "wires": [
+            [
+                "f7c2161b.3f6388",
+                "f601ebd1.16eee8"
+            ]
+        ]
+    },
+    {
+        "id": "b160efcf.16889",
+        "type": "json",
+        "z": "25dc77b9.3d62c",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 250,
+        "y": 400,
+        "wires": [
+            [
+                "f601ebd1.16eee8"
+            ]
+        ]
+    },
+    {
+        "id": "f882c6af.2d8478",
+        "type": "json",
+        "z": "25dc77b9.3d62c",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 250,
+        "y": 460,
+        "wires": [
+            [
+                "f7c2161b.3f6388",
+                "f601ebd1.16eee8"
+            ]
+        ]
+    },
+    {
+        "id": "f0b6692a.5ef318",
+        "type": "json",
+        "z": "25dc77b9.3d62c",
+        "name": "Damdata",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 200,
+        "y": 280,
+        "wires": [
+            [
+                "f7c2161b.3f6388",
+                "f601ebd1.16eee8"
+            ]
+        ]
+    },
+    {
+        "id": "aef90cf.8a1daf",
+        "type": "mysql",
+        "z": "25dc77b9.3d62c",
+        "mydb": "40890955.a85948",
+        "name": "Dam_data",
+        "x": 610,
         "y": 240,
         "wires": [
-            [
-                "29916865.c36e08",
-                "90eabecb.44521"
-            ],
-            [
-                "29916865.c36e08",
-                "1e671e13.20a8c2"
-            ],
-            [
-                "29916865.c36e08",
-                "5bd9b7e.aea3748"
-            ],
-            [
-                "2b2ffc41.cfabd4",
-                "3f83e343.ff2adc"
-            ]
+            []
         ]
     },
     {
-        "id": "adf7eb26.a43cb8",
-        "type": "function",
+        "id": "f7c2161b.3f6388",
+        "type": "template",
         "z": "25dc77b9.3d62c",
-        "name": "Calculation",
-        "func": "\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 650,
-        "y": 200,
+        "name": "",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "INSERT INTO dam_data(frl,elive_storage,reservoir,live_storage)\nVALUES({{payload.frl}},{{payload.elive_storage}},{{payload.reservoir}},{{payload.live_storage}});",
+        "output": "str",
+        "x": 400,
+        "y": 260,
         "wires": [
             [
-                "313bd8df.73bed8"
+                "aef90cf.8a1daf"
             ]
         ]
     },
     {
-        "id": "313bd8df.73bed8",
-        "type": "function",
+        "id": "363038f0.14b328",
+        "type": "link in",
         "z": "25dc77b9.3d62c",
-        "name": "Rainrunoutrelatio",
-        "func": "\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 710,
-        "y": 120,
+        "name": "Rain",
+        "links": [],
+        "x": 35,
+        "y": 280,
         "wires": [
             [
-                "aa16ede8.743a6"
+                "f0b6692a.5ef318"
             ]
         ]
     },
     {
-        "id": "275cc3da.f6ef3c",
+        "id": "ce7d40cf.31baa",
         "type": "mqtt out",
         "z": "25dc77b9.3d62c",
         "name": "",
@@ -319,40 +203,57 @@
         "qos": "1",
         "retain": "true",
         "broker": "aec2d4ac.3af4e8",
-        "x": 1190,
-        "y": 160,
+        "x": 1030,
+        "y": 360,
         "wires": []
     },
     {
-        "id": "29916865.c36e08",
-        "type": "change",
+        "id": "9ed2924e.a1b29",
+        "type": "switch",
         "z": "25dc77b9.3d62c",
-        "name": "change",
+        "name": "condi",
+        "property": "payload.water_level",
+        "propertyType": "msg",
         "rules": [
             {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "OFF",
-                "tot": "str"
+                "t": "lt",
+                "v": "600",
+                "vt": "num"
+            },
+            {
+                "t": "btwn",
+                "v": "600",
+                "vt": "num",
+                "v2": "650",
+                "v2t": "num"
+            },
+            {
+                "t": "gte",
+                "v": "650",
+                "vt": "str"
             }
         ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1000,
-        "y": 140,
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 630,
+        "y": 380,
         "wires": [
             [
-                "275cc3da.f6ef3c",
-                "998a2521.32b9b8"
+                "20057a48.a2c306",
+                "26ed634f.9af11c"
+            ],
+            [
+                "d3ed98fd.01f6d8",
+                "756996a5.47deb8"
+            ],
+            [
+                "35cca171.e3a69e"
             ]
         ]
     },
     {
-        "id": "2b2ffc41.cfabd4",
+        "id": "20057a48.a2c306",
         "type": "change",
         "z": "25dc77b9.3d62c",
         "name": "change",
@@ -370,17 +271,45 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1020,
-        "y": 240,
+        "x": 820,
+        "y": 400,
         "wires": [
             [
-                "275cc3da.f6ef3c",
-                "998a2521.32b9b8"
+                "ce7d40cf.31baa",
+                "4339b83b.695988"
             ]
         ]
     },
     {
-        "id": "998a2521.32b9b8",
+        "id": "d3ed98fd.01f6d8",
+        "type": "change",
+        "z": "25dc77b9.3d62c",
+        "name": "change",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "OFF",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 820,
+        "y": 460,
+        "wires": [
+            [
+                "ce7d40cf.31baa",
+                "4339b83b.695988"
+            ]
+        ]
+    },
+    {
+        "id": "4339b83b.695988",
         "type": "debug",
         "z": "25dc77b9.3d62c",
         "name": "Output",
@@ -390,12 +319,12 @@
         "tostatus": false,
         "complete": "payload",
         "targetType": "msg",
-        "x": 1190,
-        "y": 220,
+        "x": 1030,
+        "y": 420,
         "wires": []
     },
     {
-        "id": "90eabecb.44521",
+        "id": "26ed634f.9af11c",
         "type": "trigger",
         "z": "25dc77b9.3d62c",
         "op1": "",
@@ -408,31 +337,31 @@
         "reset": "",
         "bytopic": "all",
         "name": "",
-        "x": 1070,
-        "y": 300,
+        "x": 770,
+        "y": 540,
         "wires": [
             [
-                "87922cb0.c1b95"
+                "1da425f.0b698da"
             ]
         ]
     },
     {
-        "id": "87922cb0.c1b95",
+        "id": "1da425f.0b698da",
         "type": "sms",
         "z": "25dc77b9.3d62c",
-        "name": "Executive_Engineer",
-        "message": "The level of water across the dam has reached to critical. Please move to safest zone.Emergency contact no:+911126187232.   You can view the live dashboard by goinh to the link: http://18.223.110.198:3000/d/cVFSgWVMk/new?orgId=1&from=1596110396017&to=1596283196018",
+        "name": "Exe.Engineer",
+        "message": "The level of water across the dam has reached to critical. Please move to safest zone.Emergency contact no:+911126187232.   You can view the live dashboard by goinh to the link:http://18.223.110.198:3000/d/cVFSgWVMk/new?orgId=1&from=1596448083419&to=1596448697399",
         "numbers": "+919420804744",
         "throttle": "1",
         "twilio": "6fefe367.a9edec",
-        "x": 1260,
-        "y": 300,
+        "x": 1000,
+        "y": 540,
         "wires": [
             []
         ]
     },
     {
-        "id": "1e671e13.20a8c2",
+        "id": "756996a5.47deb8",
         "type": "trigger",
         "z": "25dc77b9.3d62c",
         "op1": "",
@@ -445,31 +374,31 @@
         "reset": "",
         "bytopic": "all",
         "name": "",
-        "x": 1070,
-        "y": 360,
+        "x": 790,
+        "y": 600,
         "wires": [
             [
-                "a500e87a.462b58"
+                "631d362f.fa93e8"
             ]
         ]
     },
     {
-        "id": "a500e87a.462b58",
+        "id": "631d362f.fa93e8",
         "type": "sms",
         "z": "25dc77b9.3d62c",
-        "name": "District_Collector",
+        "name": "District magistrate",
         "message": "The level of water across the dam has reached to critical. Please move to safest zone.Emergency contact no:+911126187232.   You can view the live dashboard by goinh to the link: http://18.223.110.198:3000/d/cVFSgWVMk/new?orgId=1&from=1596110396017&to=1596283196018",
         "numbers": "+919420804744",
         "throttle": "1",
         "twilio": "6fefe367.a9edec",
-        "x": 1270,
-        "y": 360,
+        "x": 1030,
+        "y": 600,
         "wires": [
             []
         ]
     },
     {
-        "id": "5bd9b7e.aea3748",
+        "id": "35cca171.e3a69e",
         "type": "trigger",
         "z": "25dc77b9.3d62c",
         "op1": "",
@@ -482,53 +411,16 @@
         "reset": "",
         "bytopic": "all",
         "name": "",
-        "x": 1070,
-        "y": 400,
+        "x": 790,
+        "y": 680,
         "wires": [
             [
-                "9ba16076.9ce4f"
+                "e0b0c32a.364f"
             ]
         ]
     },
     {
-        "id": "9ba16076.9ce4f",
-        "type": "sms",
-        "z": "25dc77b9.3d62c",
-        "name": "CWC divisional office",
-        "message": "The level of water across the dam has reached to critical. Please move to safest zone.Emergency contact no:+911126187232.   You can view the live dashboard by goinh to the link: http://18.223.110.198:3000/d/cVFSgWVMk/new?orgId=1&from=1596110396017&to=1596283196018",
-        "numbers": "+919420804744",
-        "throttle": "1",
-        "twilio": "6fefe367.a9edec",
-        "x": 1280,
-        "y": 400,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "3f83e343.ff2adc",
-        "type": "trigger",
-        "z": "25dc77b9.3d62c",
-        "op1": "",
-        "op2": "",
-        "op1type": "pay",
-        "op2type": "payl",
-        "duration": "2",
-        "extend": false,
-        "units": "min",
-        "reset": "",
-        "bytopic": "all",
-        "name": "",
-        "x": 1070,
-        "y": 460,
-        "wires": [
-            [
-                "52d233ee.8ef34c"
-            ]
-        ]
-    },
-    {
-        "id": "52d233ee.8ef34c",
+        "id": "e0b0c32a.364f",
         "type": "sms",
         "z": "25dc77b9.3d62c",
         "name": "Everyone",
@@ -536,11 +428,21 @@
         "numbers": "+919420804744",
         "throttle": "1",
         "twilio": "6fefe367.a9edec",
-        "x": 1220,
-        "y": 460,
+        "x": 1020,
+        "y": 660,
         "wires": [
             []
         ]
+    },
+    {
+        "id": "40890955.a85948",
+        "type": "MySQLdatabase",
+        "z": "",
+        "name": "Raindata",
+        "host": "localhost",
+        "port": "3306",
+        "db": "db1",
+        "tz": ""
     },
     {
         "id": "9b9b1264.c7985",
@@ -566,16 +468,6 @@
         "willQos": "1",
         "willRetain": "true",
         "willPayload": "DISCONNECTED"
-    },
-    {
-        "id": "40890955.a85948",
-        "type": "MySQLdatabase",
-        "z": "",
-        "name": "IoT DB on Saumya AWS",
-        "host": "localhost",
-        "port": "3306",
-        "db": "db1",
-        "tz": ""
     },
     {
         "id": "aec2d4ac.3af4e8",
