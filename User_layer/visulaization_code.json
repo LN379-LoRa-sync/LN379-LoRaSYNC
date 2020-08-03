@@ -21,9 +21,9 @@
     {
       "datasource": null,
       "gridPos": {
-        "h": 5,
-        "w": 8,
-        "x": 0,
+        "h": 4,
+        "w": 7,
+        "x": 2,
         "y": 0
       },
       "id": 6,
@@ -34,6 +34,7 @@
             "last"
           ],
           "defaults": {
+            "decimals": 2,
             "mappings": [],
             "max": 7000,
             "min": 0,
@@ -70,20 +71,20 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": false,
-          "rawSql": "SELECT\n  lastupdated AS \"time\",\n  water_level\nFROM mydata\nWHERE\n  $__timeFilter(lastupdated)\nORDER BY lastupdated",
+          "rawSql": "SELECT\n  last_updated AS \"time\",\n  reservoir\nFROM dam_data\nWHERE\n  $__timeFilter(last_updated)\nORDER BY last_updated",
           "refId": "A",
           "select": [
             [
               {
                 "params": [
-                  "water_level"
+                  "reservoir"
                 ],
                 "type": "column"
               }
             ]
           ],
-          "table": "mydata",
-          "timeColumn": "lastupdated",
+          "table": "dam_data",
+          "timeColumn": "last_updated",
           "timeColumnType": "timestamp",
           "where": [
             {
@@ -105,7 +106,7 @@
       "datasource": null,
       "gridPos": {
         "h": 6,
-        "w": 6,
+        "w": 8,
         "x": 13,
         "y": 0
       },
@@ -162,22 +163,22 @@
                 "value": ""
               }
             ],
-            "max": 7000,
+            "max": 2000,
             "min": 0,
             "thresholds": {
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "green",
+                  "color": "blue",
                   "value": null
                 },
                 {
-                  "color": "#EAB839",
-                  "value": 3500
+                  "color": "orange",
+                  "value": 750
                 },
                 {
                   "color": "red",
-                  "value": 5000
+                  "value": 1500
                 }
               ]
             },
@@ -198,20 +199,20 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": false,
-          "rawSql": "SELECT\n  lastupdated AS \"time\",\n  water_level\nFROM mydata\nWHERE\n  $__timeFilter(lastupdated)\nORDER BY lastupdated",
+          "rawSql": "SELECT\n  last_updated AS \"time\",\n  reservoir\nFROM dam_data\nWHERE\n  $__timeFilter(last_updated)\nORDER BY last_updated",
           "refId": "A",
           "select": [
             [
               {
                 "params": [
-                  "water_level"
+                  "reservoir"
                 ],
                 "type": "column"
               }
             ]
           ],
-          "table": "mydata",
-          "timeColumn": "lastupdated",
+          "table": "dam_data",
+          "timeColumn": "last_updated",
           "timeColumnType": "timestamp",
           "where": [
             {
@@ -235,13 +236,13 @@
       "dashes": false,
       "datasource": null,
       "decimals": 2,
-      "fill": 5,
+      "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 7,
+        "h": 10,
         "w": 10,
-        "x": 5,
-        "y": 6
+        "x": 1,
+        "y": 4
       },
       "hiddenSeries": false,
       "id": 4,
@@ -273,7 +274,7 @@
       },
       "percentage": false,
       "pluginVersion": "6.7.2",
-      "pointradius": 2,
+      "pointradius": 0.5,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
@@ -285,21 +286,49 @@
           "format": "time_series",
           "group": [],
           "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT\n  lastupdated AS \"time\",\n  water_level\nFROM mydata\nWHERE\n  $__timeFilter(lastupdated)\nORDER BY lastupdated",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  last_updated AS \"time\",\n  reservoir\nFROM dam_data\nWHERE\n  $__timeFilter(last_updated)\nORDER BY last_updated",
           "refId": "A",
           "select": [
             [
               {
                 "params": [
-                  "water_level"
+                  "reservoir"
                 ],
                 "type": "column"
               }
             ]
           ],
-          "table": "mydata",
-          "timeColumn": "lastupdated",
+          "table": "dam_data",
+          "timeColumn": "last_updated",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  last_updated AS \"time\",\n  frl\nFROM dam_data\nWHERE\n  $__timeFilter(last_updated)\nORDER BY last_updated",
+          "refId": "B",
+          "select": [
+            [
+              {
+                "params": [
+                  "frl"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "dam_data",
+          "timeColumn": "last_updated",
           "timeColumnType": "timestamp",
           "where": [
             {
@@ -340,9 +369,9 @@
       },
       "yaxes": [
         {
-          "decimals": 2,
+          "decimals": null,
           "format": "lengthft",
-          "label": null,
+          "label": "water level",
           "logBase": 1,
           "max": null,
           "min": null,
@@ -350,6 +379,146 @@
         },
         {
           "decimals": 2,
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 10,
+        "x": 12,
+        "y": 6
+      },
+      "hiddenSeries": false,
+      "id": 8,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  last_updated AS \"time\",\n  live_storage\nFROM dam_data\nWHERE\n  $__timeFilter(last_updated)\nORDER BY last_updated",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "live_storage"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "dam_data",
+          "timeColumn": "last_updated",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  last_updated AS \"time\",\n  elive_storage\nFROM dam_data\nWHERE\n  $__timeFilter(last_updated)\nORDER BY last_updated",
+          "refId": "B",
+          "select": [
+            [
+              {
+                "params": [
+                  "elive_storage"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "dam_data",
+          "timeColumn": "last_updated",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "WATER STORAGE",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "water storage (Mcum)",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -372,8 +541,8 @@
     "list": []
   },
   "time": {
-    "from": "2020-08-01T14:26:08.231Z",
-    "to": "2020-08-01T16:42:26.347Z"
+    "from": "2020-08-03T09:48:03.419Z",
+    "to": "2020-08-03T09:58:17.399Z"
   },
   "timepicker": {},
   "timezone": "",
@@ -382,5 +551,5 @@
   "variables": {
     "list": []
   },
-  "version": 29
+  "version": 39
 }
