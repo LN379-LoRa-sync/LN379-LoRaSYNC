@@ -15,8 +15,9 @@ SELECT*FROM all_whether_station;
 #databses for net reservoir level,canal level and precipitation
 
 USE db1;
-CREATE TABLE dam_data(inflow double, outflow double, waterlevel double, last_updated timestamp);
-INSERT INTO dam_data(inflow, outflow, waterlevel)VALUES(inflow_values, outflow_values, waterlevel);
+CREATE TABLE dam_data(frl double,elive_storage double,reservoir double,live_storage double, timestamp);
+INSERT INTO dam_data(frl double,elive_storage double,reservoir double,live_storage double, timestamp)
+VALUES(frl_values,elive_storage_values,reservoir_values,live_storage_values);
 SELECT*FROM dam_data;
 #IN abouve all queries we are only creating tables for different parameters and feeding the data which 
 #we got from govt and using our sensors in that table.We will be anylysing this data in Grafana usng graphs.
